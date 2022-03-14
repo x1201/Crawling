@@ -20,6 +20,8 @@ public class RecipeController {
 	@Autowired
 	RecipeService recipeService;
 	
+	
+	
 	@GetMapping("/getContents")
 	public String getContens(@RequestParam String id)throws Exception{
 		return recipeService.getContents(id);
@@ -27,12 +29,11 @@ public class RecipeController {
 	
 	@SuppressWarnings("null")
 	@GetMapping("/insert")
-	public String insertRecipe(@RequestParam String address) throws Exception{
+	public String insertRecipe(@RequestParam String url) throws Exception{
 		Recipe recipe = new Recipe();
 		String content = null;
 		String picture = null;
-		// Jsoup를 이용해서 http://www.cgv.co.kr/movies/ 크롤링
-		String url = "https://www.10000recipe.com/recipe/6864674"; //크롤링할 url지정
+		//String url = "https://www.10000recipe.com/recipe/6864674"; //크롤링할 url지정
 		Document doc = null;        //Document에는 페이지의 전체 소스가 저장된다
 
 		try {
@@ -58,7 +59,6 @@ public class RecipeController {
 		}
 		while (ie1.hasNext()) {
 			String temp = content +"@"+ ie1.next().text();
-			 System.out.println(temp);
 			content = temp;
 		}
 		recipe.setContent(content);
