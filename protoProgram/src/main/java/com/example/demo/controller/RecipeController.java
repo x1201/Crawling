@@ -27,6 +27,8 @@ public class RecipeController {
 		return recipeService.getContents(id);
 	}
 	
+	
+	//url로 레시피 db저장
 	@SuppressWarnings("null")
 	@GetMapping("/insert")
 	public String insertRecipe(@RequestParam String url) throws Exception{
