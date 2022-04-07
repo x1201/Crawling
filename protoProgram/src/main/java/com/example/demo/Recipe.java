@@ -16,5 +16,6 @@ public class Recipe {
 	private String content;
 	private String Picture;
 	private String recipePicture;
+	private String tag;
 	
 }
